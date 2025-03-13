@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timetable</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Generated Timetable</h1>
+    
+    <table>
+        <tr>
+            <th>Department</th>
+            <th>Course</th>
+            <th>Instructor</th>
+            <th>Room</th>
+            <th>Day</th>
+            <th>Time</th>
+        </tr>
+        {% for class in schedule %}
+        <tr>
+            <td>{{ class.department }}</td>
+            <td>{{ class.course }}</td>
+            <td>{{ class.instructor }}</td>
+            <td>{{ class.room }}</td>
+            <td>{{ class.day }}</td>
+            <td>{{ class.time }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="6">No classes scheduled</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #ADEFD1FF, #00203FFF);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .dashboard-container {
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      padding: 40px;
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      color: white;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    .dashboard-container a {
+      display: inline-block;
+      margin: 15px;
+      padding: 12px 30px;
+      text-decoration: none;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 2px solid white;
+      border-radius: 10px;
+      transition: 0.4s ease;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .dashboard-container a:hover {
+      background-color: white;
+      color: #00203FFF;
+      font-weight: bold;
+      box-shadow: 0 0 15px white;
+    }
+
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .particles i {
+      position: absolute;
+      border-radius: 50%;
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      animation: float 20s linear infinite;
+      bottom: -150px;
+    }
+
+    .particles i:nth-child(1) { left: 10%; animation-duration: 10s; width: 10px; height: 10px; }
+    .particles i:nth-child(2) { left: 20%; animation-duration: 18s; width: 15px; height: 15px; }
+    .particles i:nth-child(3) { left: 30%; animation-duration: 12s; }
+    .particles i:nth-child(4) { left: 50%; animation-duration: 20s; width: 25px; height: 25px; }
+    .particles i:nth-child(5) { left: 70%; animation-duration: 17s; width: 12px; height: 12px; }
+    .particles i:nth-child(6) { left: 85%; animation-duration: 22s; width: 40px; height: 40px; }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-1200px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-container {
+        padding: 30px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .dashboard-container a {
+        padding: 10px 20px;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .dashboard-container {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      .dashboard-container a {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="particles">
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+  </div>
+
+  <div class="dashboard-container">
+    <h1>Dashboard</h1>
+    <a href="/instructor">Instructors</a>
+    <a href="/room">Rooms</a>
+    <a href="/meeting">Meetings</a>
+    <a href="/courses">Courses</a>
+    <a href="/departments">Departments</a>
+    <a href="/timetable">Generate Timetable</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instructor</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom right,rgb(206, 12, 12),orange);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    form {
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-radius: 15px;
+      padding: 30px;
+      width: 360px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+      color: white;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 22px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 500;
+    }
+
+    input[type="text"] {
+      width: 94%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: transparent;
+      color: white;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #eee;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 12px;
+      background-color: black;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.4s ease;
+    }
+
+    button:hover {
+      background-color: white;
+      color: black;
+    }
+
+    /* Particle Animation */
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .particles i {
+      position: absolute;
+      display: block;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+      animation: float 20s linear infinite;
+      bottom: -150px;
+    }
+
+    .particles i:nth-child(1) { left: 10%; animation-duration: 10s; width: 10px; height: 10px; }
+    .particles i:nth-child(2) { left: 25%; animation-duration: 15s; width: 20px; height: 20px; }
+    .particles i:nth-child(3) { left: 40%; animation-duration: 18s; width: 12px; height: 12px; }
+    .particles i:nth-child(4) { left: 60%; animation-duration: 22s; width: 25px; height: 25px; }
+    .particles i:nth-child(5) { left: 75%; animation-duration: 14s; width: 18px; height: 18px; }
+    .particles i:nth-child(6) { left: 90%; animation-duration: 19s; width: 30px; height: 30px; }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      form {
+        width: 90%;
+        padding: 25px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      form {
+        padding: 20px;
+      }
+      input[type="text"] {
+        padding: 8px;
+      }
+      button {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="particles">
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+  </div>
+
+  <form method="POST" action="{{ url_for('instructor') }}">
+    <h1>Add / Edit Instructor</h1>
+    <label>Instructor ID:</label>
+    <input type="text" name="instructorid" placeholder="Enter Instructor ID" required>
+    <label>Instructor Name:</label>
+    <input type="text" name="instructorname" placeholder="Enter Instructor Name" required>
+    <button type="submit">Submit</button>
+  </form>
+
+</body>
+</html>
