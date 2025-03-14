@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background: linear-gradient(45deg, #FDFBEE, #57B4BA);
+            font-family: Arial, sans-serif;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            max-height: 300px;
+            margin: 160px auto;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+            overflow-y: scroll;
+        }
+
+        h1 {
+            text-align: center;
+            color: #015551;
+            margin-bottom: 30px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            /* height: 400px; */
+            table-layout: fixed;
+            overflow-y: scroll;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 14px 12px;
+            text-align: center;
+            word-wrap: break-word;
+        }
+
+        th {
+            background-color: #57B4BA;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #FDFBEE;
+        }
+
+        tr:hover {
+            background-color: #fc7357;
+            color: white;
+            transition: 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="particleCanvas"></canvas>
+
+    <div class="content">
+        <h1>Generated Timetable</h1>
+        <table>
+            <tr>
+                <th>Department</th>
+                <th>Course</th>
+                <th>Instructor</th>
+                <th>Room</th>
+                <th>Day</th>
+                <th>Time</th>
+            </tr>
+            {% for class in schedule %}
+            <tr>
+                <td>{{ class.department }}</td>
+                <td>{{ class.course }}</td>
+                <td>{{ class.instructor }}</td>
+                <td>{{ class.room }}</td>
+                <td>{{ class.day }}</td>
+                <td>{{ class.time }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6">No classes scheduled</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const particles = [];
+        const particleCount = 30;
+        let mouse = {
+            x: null,
+            y: null,
+            inside: false
+        };
+
+        class Particle {
+            constructor() {
+                this.baseX = Math.random() * width;
+                this.baseY = Math.random() * height;
+                this.x = this.baseX;
+                this.y = this.baseY;
+                this.size = 9;
+                this.speed = 0.05 + Math.random() * 0.05;
+                this.vx = (Math.random() - 0.5) * 1;
+                this.vy = (Math.random() - 0.5) * 1;
+            }
+
+            update() {
+                if (mouse.inside) {
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    this.x += dx * this.speed;
+                    this.y += dy * this.speed;
+                } else {
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    // Bounce off canvas borders
+                    if (this.x < 0 || this.x > width) this.vx *= -1;
+                    if (this.y < 0 || this.y > height) this.vy *= -1;
+                }
+            }
+
+            draw() {
+                ctx.fillStyle = '#c4fff9';
+                const radius = 3; // Adjust this to make corners more or less rounded
+                const size = this.size * 2; // Size of the square
+                this.roundRect(ctx, this.x - this.size, this.y - this.size, size, size, radius);
+                ctx.fill();
+            }
+
+            // Helper function for rounded rectangles
+            roundRect(ctx, x, y, width, height, radius) {
+                if (width < 2 * radius) radius = width / 2;
+                if (height < 2 * radius) radius = height / 2;
+                ctx.beginPath();
+                ctx.moveTo(x + radius, y);
+                ctx.arcTo(x + width, y, x + width, y + height, radius);
+                ctx.arcTo(x + width, y + height, x, y + height, radius);
+                ctx.arcTo(x, y + height, x, y, radius);
+                ctx.arcTo(x, y, x + width, y, radius);
+                ctx.closePath();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        canvas.addEventListener('mouseenter', () => {
+            mouse.inside = true;
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            mouse.inside = false;
+        });
+    </script>
+
+</body>
+
+</html>
