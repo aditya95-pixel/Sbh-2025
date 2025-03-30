@@ -1,19 +1,18 @@
-
 body {
     padding-top: 3rem;
     padding-bottom: 3rem;
-    color: #5a5a5a;
-    font-family: 'Poppins', sans-serif;
+    color: black;
+    font-family: "Poppins";
     overflow-x: hidden;
 }
 
 nav {
-    font-family: sans-serif;
+    font-family: "Poppins";
 }
 
 .navbar-brand {
     font-size: 20px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: "Poppins";
 }
 
 .carousel {
@@ -55,15 +54,15 @@ nav {
     }
 
 .fa-bolt {
-    color: #5a5a5a;
+    color: black;
 }
 
 .fa-lock {
-    color: #5a5a5a;
+    color: black;
 }
 
 .fa-check-square {
-    color: #5a5a5a;
+    color: black;
 }
 
 .fa-bolt, .fa-lock, .fa-check-square {
