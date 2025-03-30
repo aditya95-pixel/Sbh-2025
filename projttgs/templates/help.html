@@ -2,7 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>TTGS | Help</title>
+    <title>Help</title>
     <meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -64,34 +64,37 @@ nav {
     <form id="form1">
         <header>
             <!--Navigation Bar-->
-			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-                <a class="navbar-brand" href="#"><b>TIMETABLE GENERATOR</b></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+			<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #000;">
+                <a class="navbar-brand" href="#" style="color: #ffffff; font-weight: 600;">
+                  <b>TimeEasy</b>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                  aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" style="background-color: black;">
+                  <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'index' %}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about' %}">About Us</a>
-                    </li>
+                  <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'help' %}">Help</a>
+                      <a class="nav-link" href="{% url 'index' %}" style="color: #fff;">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+                      <a class="nav-link" href="{% url 'about' %}" style="color: #fff;">About Us</a>
                     </li>
                     <li class="nav-item">
-		                <a class="nav-link" href="{% url 'login' %}">Login</a>
-		            </li>
-		            <li class="nav-item">
-			            <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
-		            </li>
-                    </ul>
+                      <a class="nav-link" href="{% url 'help' %}" style="color: #fff;">Help</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'contact' %}" style="color: #fff;">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'login' %}" style="color: #fff;">Login</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'register' %}" style="color: #fff;">Sign Up</a>
+                    </li>
+                  </ul>
                 </div>
-            </nav>
+              </nav>
         </header>
         <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
             <h1 class="display-4">How to go about TTGS?</h1>

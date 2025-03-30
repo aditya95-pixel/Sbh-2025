@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>TTGS | Dashboard</title>
+	<title>Dashboard</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -267,50 +267,53 @@ fieldset button
 <body>
         <header>
             <!--Navigation Bar-->
-			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-                <a class="navbar-brand" href="#"><b>TIMETABLE GENERATOR</b></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+			<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #000;">
+                <a class="navbar-brand" href="#" style="color: #fff; font-weight: 600;">
+                    <b>TimeEasy</b>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" 
+                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
+                        style="border-color: rgba(255,255,255,0.5);">
+                    <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'admindash' %}">Get Started</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'addInstructors' %}">Add Teachers</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'addRooms' %}">Add Rooms</a>
-                    </li>
-                    <li class="nav-item">
-		                <a class="nav-link" href="{% url 'addTimings' %}">Add Timings</a>
-		            </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'addCourses' %}">Add Courses</a>
-                    </li>
-                    <li class="nav-item">
-			            <a class="nav-link" href="{% url 'addDepts' %}">Add Departments</a>
-		            </li>
-                    <li class="nav-item">
-			            <a class="nav-link" href="{% url 'addSections' %}">Add Sections</a>
-		            </li>
-                    <li class="nav-item">
-			            <a class="nav-link" href="{% url 'generate' %}">Generate Timetable</a>
-		            </li>
-                    <li class="nav-item active">
-			            <a class="nav-link">|</a>
-		            </li>
-                    <li class="nav-item dropdown">
-		                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome, {{ user.first_name }}</a>
-			            <div class="dropdown-menu" aria-labelledby="dropdown03">
-			                <a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a>
-				            <a class="dropdown-item" href="{% url 'index' %}">Logout</a>
-			            </div>
-		            </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'admindash' %}" style="color: #fff;">Get Started</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'addInstructors' %}" style="color: #fff;">Add Teachers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'addRooms' %}" style="color: #fff;">Add Rooms</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'addTimings' %}" style="color: #fff;">Add Timings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'addCourses' %}" style="color: #fff;">Add Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'addDepts' %}" style="color: #fff;">Add Departments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'addSections' %}" style="color: #fff;">Add Sections</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'generate' %}" style="color: #fff;">Generate Timetable</a>
+                        </li>
+                        <li class="nav-item" style="color: #fff; padding: 8px 16px;">|</li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" 
+                               aria-haspopup="true" aria-expanded="false" style="color: #fff;">
+                                Welcome, {{ user.first_name }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown03" style="background-color: #000; border: 1px solid #333;">
+                                <a class="dropdown-item" href="{% url 'password_change' %}" style="color: #fff;">Change Password</a>
+                                <a class="dropdown-item" href="{% url 'index' %}" style="color: #fff;">Logout</a>
+                            </div>
+                        </li>
                     </ul>
-
                     <script type="text/javascript">
 
         var checkList = document.getElementById('list1');

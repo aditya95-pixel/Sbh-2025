@@ -2,7 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>TTGS | Contact Us</title>
+    <title>Contact Us</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -291,34 +291,37 @@ section .container .formBox .inputBox input[type=submit]:hover
 <body>
     <header>
             <!--Navigation Bar-->
-			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-                <a class="navbar-brand" href="#"><b>TIMETABLE GENERATOR</b></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+			<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #000;">
+                <a class="navbar-brand" href="#" style="color: #ffffff; font-weight: 600;">
+                  <b>TimeEasy</b>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                  aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" style="background-color: black;">
+                  <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'index' %}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about' %}">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'help' %}">Help</a>
-                    </li>
+                  <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+                      <a class="nav-link" href="{% url 'index' %}" style="color: #fff;">Home</a>
                     </li>
                     <li class="nav-item">
-		                <a class="nav-link" href="{% url 'login' %}">Login</a>
-		            </li>
-		            <li class="nav-item">
-			            <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
-		            </li>
-                    </ul>
+                      <a class="nav-link" href="{% url 'about' %}" style="color: #fff;">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'help' %}" style="color: #fff;">Help</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'contact' %}" style="color: #fff;">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'login' %}" style="color: #fff;">Login</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'register' %}" style="color: #fff;">Sign Up</a>
+                    </li>
+                  </ul>
                 </div>
-            </nav>
+              </nav>
     </header><br>
     <form method="post" id="form1" action="{% url 'contact' %}">
     {% csrf_token %}
