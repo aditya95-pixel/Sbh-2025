@@ -1,6 +1,6 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.shortcuts import render,redirect
+from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Profile
@@ -50,4 +50,3 @@ def register(request):
     return render(request,
                   'account/register.html',
                   {'user_form': user_form})
-
