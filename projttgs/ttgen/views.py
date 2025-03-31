@@ -7,7 +7,9 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from .render import Render
 from django.views.generic import View
-
+from django.http import JsonResponse
+import google.generativeai as genai
+from decouple import config
 
 POPULATION_SIZE = 9
 NUMB_OF_ELITE_SCHEDULES = 1
@@ -446,4 +448,38 @@ class Pdf(View):
         }
         return Render.render('gentimetable.html', params)
 
+####################################################
 
+GOOGLE_API_KEY = config("GOOGLE_API_KEY")
+genai.configure(api_key=GOOGLE_API_KEY)
+model = genai.GenerativeModel("gemini-2.0-flash")
+
+def chat_view(request):
+    if 'chat_history' not in request.session:
+        request.session['chat_history'] = []
+    if request.method == 'POST':
+        user_input = request.POST.get('message','').strip()
+        if user_input.lower() == 'exit':
+            request.session['chat_history'] = []  
+            return JsonResponse({'response': 'Goodbye!', 'chat_history': []})
+        try:
+            chat_history = request.session['chat_history']
+            conversation = []
+            for exchange in chat_history:
+                conversation.append({'role': 'user', 'parts': [exchange['user']]})
+                conversation.append({'role': 'model', 'parts': [exchange['bot']]})
+            conversation.append({'role': 'user', 'parts': [user_input]})
+            response = model.generate_content(conversation)
+            bot_response = response.text
+            chat_history.append({'user': user_input, 'bot': bot_response})
+            request.session['chat_history'] = chat_history
+            request.session.modified = True
+            return JsonResponse({
+                'response': bot_response,
+                'chat_history': chat_history
+            })
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+    return render(request, 'chat.html', {
+        'chat_history': request.session.get('chat_history', [])
+    })

@@ -8,7 +8,7 @@ urlpatterns = [
     path('help', views.help, name='help'),
     path('terms', views.terms, name='terms'),
     path('contact', views.contact, name='contact'),
-
+    path("chat/",views.chat_view, name='chat'),
     path('admin_dashboard', views.admindash, name='admindash'),
 
     path('add_teachers', views.addInstructor, name='addInstructors'),
