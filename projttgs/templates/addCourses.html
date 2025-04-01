@@ -64,8 +64,8 @@
 
     h2, h5 {
         color: var(--dark-blue);
-        margin-left: 30%;
-        margin-right: 33%;
+        margin-left: 1%;
+        margin-right: 8%;
     }
 
     form {
@@ -206,15 +206,24 @@
         </header>
         {% block content %}
 {% load static %}
-        <br><br>
-        <h2>Add Courses</h2>
-        <h5>Please use the following form to enter the Courses into the system for timetable generation</h5>
+<br><br>
+<div style="max-width: 800px; margin: 0 auto; padding: 0 1rem;">
+    <h2 style="text-align: left; font-weight: 600; color: var(--dark-blue);">Add Courses</h2>
+    <h5 style="text-align: left; font-weight: 400; color: #555; margin-top: 5px;">
+        Please use the following form to enter the courses into the system for timetable generation.
+    </h5>
+</div>
 <form method="post">
 	{% csrf_token %}
 	<fieldset>
 		<div class="tabcontent" id="new">
 			{{ form.as_p }}
-		<a href="{% url 'editcourse' %}"><h1 class="submit" onclick="openPage('edit')">View / Edit Courses</h1></a><input type="submit" value="Add Courses" class="submit">
+            <div class="button-group">
+            <a href="{% url 'editcourse' %}" class="submit submit-secondary">
+                View / Edit Course
+            </a>
+            <input type="submit" value="Add Courses" class="submit">
+            </div>
 		</div>
 	</fieldset>
 </form>

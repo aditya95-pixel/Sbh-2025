@@ -247,12 +247,6 @@ def terms(request):
 def contact(request):
     if request.method == 'POST':
         message = request.POST['message']
-
-        send_mail('TTGS Contact',
-                  message,
-                  settings.EMAIL_HOST_USER,
-                  ['codevoid12@gmail.com'],
-                  fail_silently=False)
     return render(request, 'contact.html', {})
 
 #################################################################################
@@ -448,7 +442,7 @@ class Pdf(View):
         }
         return Render.render('gentimetable.html', params)
 
-####################################################
+#################################################################################
 
 GOOGLE_API_KEY = config("GOOGLE_API_KEY")
 genai.configure(api_key=GOOGLE_API_KEY)
